@@ -1,5 +1,10 @@
 import * as React from 'react';
+import { AppRouter } from './../routes';
 
 export const App = () => {
-  return <div>blaajabkjabka</div>;
+  return (
+    <div>
+      <AppRouter />
+    </div>
+  );
 };
