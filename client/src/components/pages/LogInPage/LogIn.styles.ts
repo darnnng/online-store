@@ -16,8 +16,9 @@ export const GridContainer = styled(Grid)({
 export const PaperContainer = styled(Paper)({
   padding: '10px',
   height: 450,
-  width: 550,
+  width: 400,
   margin: '80px auto',
+  borderRadius: '30px',
 });
 
 export const ButtonSubmitForm = styled(Button)(({ theme }) => ({
@@ -29,6 +30,7 @@ export const ButtonSubmitForm = styled(Button)(({ theme }) => ({
 }));
 
 export const ButtonLink = styled(Button)(({ theme }) => ({
+  border: `${theme.palette.secondary.main} 1px solid`,
   height: '50px',
   marginTop: '16px',
   color: theme.palette.secondary.main,

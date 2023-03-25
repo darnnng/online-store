@@ -28,9 +28,7 @@ const LogInPage = () => {
               direction="column"
               sx={{ p: 3, alignItems: 'center', justifyContent: 'center' }}
             >
-              <Typography sx={{ mb: 1 }} variant="h4">
-                Welcome back!
-              </Typography>
+              <Typography sx={{ mb: 1, fontSize: '30px' }}>Welcome back!</Typography>
               <Typography>Hello again! Sign in to continue</Typography>
               <FormSign noValidate>
                 <TextField
