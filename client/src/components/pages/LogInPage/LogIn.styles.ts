@@ -3,6 +3,7 @@ import { Button, Grid, Paper, styled } from '@mui/material';
 export const Main = styled('main')({
   marginTop: '65px',
   overflowX: 'hidden',
+  backgroundColor: '#f5f5f7',
 });
 
 export const GridContainer = styled(Grid)({
@@ -13,13 +14,14 @@ export const GridContainer = styled(Grid)({
   right: '0',
 });
 
-export const PaperContainer = styled(Paper)({
+export const PaperContainer = styled(Paper)(({ theme }) => ({
   padding: '10px',
-  height: 450,
-  width: 400,
-  margin: '80px auto',
+  minHeight: 450,
+  width: 450,
+  margin: '20px auto',
   borderRadius: '30px',
-});
+  border: `${theme.palette.secondary.main} 2px solid`,
+}));
 
 export const ButtonSubmitForm = styled(Button)(({ theme }) => ({
   height: 50,

@@ -1,16 +1,16 @@
-import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { RoutePath } from './../../../constants/routeVariables';
-import * as Styled from './LogIn.styles';
-import { IFormInput } from './LogIn.interface';
-import { loginSchema } from './../../../constants/validation';
+import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
+import { RoutePath } from '../../../constants/routeVariables';
+import * as Styled from '../LogInPage/LogIn.styles';
+import { IFormInput } from './SignUp.interface';
+import { signUpSchema } from './../../../constants/validation';
 
-const LogInPage = () => {
+const SignUpPage = () => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const handleVisiblePassword = () => {
     setHiddenPassword((visibility) => !visibility);
@@ -22,7 +22,7 @@ const LogInPage = () => {
   } = useForm<IFormInput>({
     defaultValues: { email: '', password: '' },
     mode: 'onChange',
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(signUpSchema),
   });
 
   const onSubmit = () => {
@@ -38,9 +38,45 @@ const LogInPage = () => {
               direction="column"
               sx={{ p: 3, alignItems: 'center', justifyContent: 'center' }}
             >
-              <Typography sx={{ mb: 1, fontSize: '30px' }}>Welcome back!</Typography>
-              <Typography>Hello again! Sign in to continue</Typography>
+              <Typography sx={{ mb: 1, fontSize: '30px' }}>Welcome!</Typography>
+              <Typography>Sign up to continue</Typography>
               <Styled.FormSign onSubmit={handleSubmit(onSubmit)} noValidate>
+                <TextField
+                  fullWidth
+                  label="First name"
+                  placeholder="Enter first name"
+                  variant="outlined"
+                  sx={{ mt: 2, mb: 0.5, height: '45px' }}
+                  color="secondary"
+                  type="text"
+                  {...register('firstName')}
+                  helperText={errors.firstName?.message as string}
+                  error={!!errors.firstName?.message}
+                />
+                <TextField
+                  fullWidth
+                  label="Last name"
+                  placeholder="Enter last name"
+                  variant="outlined"
+                  sx={{ mt: 2, mb: 0.5, height: '45px' }}
+                  color="secondary"
+                  type="text"
+                  {...register('lastName')}
+                  helperText={errors.lastName?.message as string}
+                  error={!!errors.lastName?.message}
+                />
+                <TextField
+                  fullWidth
+                  label="Phone"
+                  placeholder="Enter phone"
+                  variant="outlined"
+                  sx={{ mt: 2, mb: 0.5, height: '45px' }}
+                  color="secondary"
+                  type="text"
+                  {...register('phone')}
+                  helperText={errors.phone?.message as string}
+                  error={!!errors.phone?.message}
+                />
                 <TextField
                   fullWidth
                   label="Email"
@@ -87,9 +123,9 @@ const LogInPage = () => {
                   type="submit"
                   variant="text"
                   component={NavLink}
-                  to={`/${RoutePath.SIGNUP}`}
+                  to={`/${RoutePath.LOGIN}`}
                 >
-                  Create new account
+                  Already have an account?
                 </Styled.ButtonLink>
               </Styled.FormSign>
             </Grid>
@@ -100,4 +136,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default SignUpPage;

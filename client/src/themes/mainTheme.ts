@@ -11,6 +11,7 @@ export const mainTheme = createTheme({
       contrastText: '#666666',
     },
   },
+  typography: { fontFamily: 'Montserrat' },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
@@ -52,6 +53,15 @@ export const mainTheme = createTheme({
           position: 'relative',
           overflow: 'hidden',
           paddingBottom: '20px',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          '&:-webkit-autofill': {
+            WebkitBoxShadow: '0 0 0 100px #ffffff inset',
+          },
         },
       },
     },
