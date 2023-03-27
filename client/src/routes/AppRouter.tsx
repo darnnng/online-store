@@ -1,10 +1,9 @@
 import React, { lazy } from 'react';
 import { Routes, Route, Navigate, BrowserRouter, Outlet } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import { toJS } from 'mobx';
-import usersStore from './../store/UserStore';
 import { Layout } from './../components/layout';
 import { RoutePath } from './../constants/routeVariables';
+import { PrivateRoute } from './PrivateRoute';
 
 const LogInPage = lazy(() => import('./../components/pages/LogInPage'));
 const SignUpPage = lazy(() => import('./../components/pages/SignUpPage'));
@@ -14,7 +13,6 @@ const AdminPage = lazy(() => import('./../components/pages/AdminPage'));
 const ItemPage = lazy(() => import('./../components/pages/ItemPage'));
 
 export const AppRouter = observer(() => {
-  const isAuth = toJS(usersStore.findIsAuth);
   return (
     <BrowserRouter>
       <Routes>
@@ -23,13 +21,34 @@ export const AppRouter = observer(() => {
           <Route path={RoutePath.LOGIN} element={<LogInPage />} />
           <Route path={RoutePath.SIGNUP} element={<SignUpPage />} />
 
-          <Route path={RoutePath.CATALOG} element={<Outlet />}>
+          <Route
+            path={RoutePath.CATALOG}
+            element={
+              <PrivateRoute>
+                <Outlet />
+              </PrivateRoute>
+            }
+          >
             <Route index element={<CatalogPage />} />
             <Route path=":id" element={<ItemPage />} />
           </Route>
 
-          <Route path={RoutePath.BASKET} element={<BasketPage />} />
-          <Route path={RoutePath.ADMIN} element={<AdminPage />} />
+          <Route
+            path={RoutePath.BASKET}
+            element={
+              <PrivateRoute>
+                <BasketPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={RoutePath.ADMIN}
+            element={
+              <PrivateRoute>
+                <AdminPage />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

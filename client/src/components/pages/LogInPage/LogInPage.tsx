@@ -1,17 +1,22 @@
 import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AxiosError } from 'axios';
+import { observer } from 'mobx-react-lite';
 import { RoutePath } from './../../../constants/routeVariables';
 import * as Styled from './LogIn.styles';
 import { IFormInput } from './LogIn.interface';
 import { loginSchema } from './../../../constants/validation';
+import { login } from './../../../http/userAPI';
+import userStore from './../../../store/UserStore';
 
-const LogInPage = () => {
+const LogInPage = observer(() => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
+  const navigate = useNavigate();
   const handleVisiblePassword = () => {
     setHiddenPassword((visibility) => !visibility);
   };
@@ -25,9 +30,23 @@ const LogInPage = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const onSubmit = () => {
-    console.log('login');
+  const onSubmit = async (input: IFormInput) => {
+    try {
+      const user = await login(input.email, input.password);
+      userStore.setUser(user);
+      userStore.setIsAuth(true);
+      navigate(`/${RoutePath.CATALOG}`);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error.response?.data.message);
+      } else {
+        console.log('Unexpected error', error);
+      }
+    }
   };
+
+  //TO-DO : исправить верстку, заменить импорты на @, вывод ошибок, добавить в постгрес телефоны и имена, убрать тип any,
+  //заменить auth там где надо, кнопка logout
   return (
     <Styled.Main>
       <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>
@@ -98,6 +117,6 @@ const LogInPage = () => {
       </Container>
     </Styled.Main>
   );
-};
+});
 
 export default LogInPage;

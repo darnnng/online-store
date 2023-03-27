@@ -1,33 +1,51 @@
 import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
+import { observer } from 'mobx-react-lite';
+import { AxiosError } from 'axios';
 import { RoutePath } from '../../../constants/routeVariables';
 import * as Styled from '../LogInPage/LogIn.styles';
 import { IFormInput } from './SignUp.interface';
 import { signUpSchema } from './../../../constants/validation';
+import { registration } from './../../../http/userAPI';
+import userStore from './../../../store/UserStore';
 
-const SignUpPage = () => {
+const SignUpPage = observer(() => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const handleVisiblePassword = () => {
     setHiddenPassword((visibility) => !visibility);
   };
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({
-    defaultValues: { email: '', password: '' },
     mode: 'onChange',
     resolver: yupResolver(signUpSchema),
   });
+  //TO DO CHANGE LAYOUT
 
-  const onSubmit = () => {
-    console.log('login');
+  const onSubmit = async (input: IFormInput) => {
+    try {
+      const user = await registration(input.email, input.password);
+      userStore.setUser(user);
+      userStore.setIsAuth(true);
+      navigate(`/${RoutePath.CATALOG}`);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error.response?.data.message);
+      } else {
+        console.log('Unexpected error', error);
+      }
+    }
   };
+
+  console.log(userStore.isAuth);
   return (
     <Styled.Main>
       <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>
@@ -115,7 +133,7 @@ const SignUpPage = () => {
                 />
 
                 <Styled.ButtonSubmitForm fullWidth type="submit" variant="contained">
-                  Sign in
+                  Sign up
                 </Styled.ButtonSubmitForm>
 
                 <Styled.ButtonLink
@@ -134,6 +152,6 @@ const SignUpPage = () => {
       </Container>
     </Styled.Main>
   );
-};
+});
 
 export default SignUpPage;

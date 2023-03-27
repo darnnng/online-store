@@ -16,14 +16,14 @@ class UserStore {
     this.user = user;
   }
 
-  get findIsAuth() {
-    return this.isAuth;
-  }
+  // get findIsAuth() {
+  //   return this.isAuth;
+  // }
 
-  get getUser() {
-    return this.user;
-  }
+  // get getUser() {
+  //   return this.user;
+  // }
 }
 
-const usersStore = new UserStore();
-export default usersStore;
+const userStore = new UserStore();
+export default userStore;
