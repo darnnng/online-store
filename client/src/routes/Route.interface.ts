@@ -1,3 +1,3 @@
-export interface IPrivateRouteProps {
+export interface IRouteProps {
   children: React.ReactNode | JSX.Element;
 }

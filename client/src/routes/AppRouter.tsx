@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { Layout } from './../components/layout';
 import { RoutePath } from './../constants/routeVariables';
 import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 const LogInPage = lazy(() => import('./../components/pages/LogInPage'));
 const SignUpPage = lazy(() => import('./../components/pages/SignUpPage'));
@@ -18,8 +19,22 @@ export const AppRouter = observer(() => {
       <Routes>
         <Route path={RoutePath.HOME} element={<Layout />}>
           <Route path="/" element={<Navigate to={RoutePath.LOGIN} replace />} />
-          <Route path={RoutePath.LOGIN} element={<LogInPage />} />
-          <Route path={RoutePath.SIGNUP} element={<SignUpPage />} />
+          <Route
+            path={RoutePath.LOGIN}
+            element={
+              <PublicRoute>
+                <LogInPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path={RoutePath.SIGNUP}
+            element={
+              <PublicRoute>
+                <SignUpPage />
+              </PublicRoute>
+            }
+          />
 
           <Route
             path={RoutePath.CATALOG}

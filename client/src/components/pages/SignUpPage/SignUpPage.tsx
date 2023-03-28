@@ -28,13 +28,13 @@ const SignUpPage = observer(() => {
     mode: 'onChange',
     resolver: yupResolver(signUpSchema),
   });
-  //TO DO CHANGE LAYOUT
 
   const onSubmit = async (input: IFormInput) => {
     try {
       const user = await registration(input.email, input.password);
       userStore.setUser(user);
       userStore.setIsAuth(true);
+      localStorage.setItem('user', JSON.stringify(user));
       navigate(`/${RoutePath.CATALOG}`);
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -50,7 +50,7 @@ const SignUpPage = observer(() => {
     <Styled.Main>
       <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>
         <Styled.GridContainer container>
-          <Styled.PaperContainer>
+          <Styled.PaperSignUpContainer>
             <Grid
               container
               direction="column"
@@ -64,9 +64,10 @@ const SignUpPage = observer(() => {
                   label="First name"
                   placeholder="Enter first name"
                   variant="outlined"
-                  sx={{ mt: 2, mb: 0.5, height: '45px' }}
+                  sx={{ mt: 2, mb: 0.5 }}
                   color="secondary"
                   type="text"
+                  size="small"
                   {...register('firstName')}
                   helperText={errors.firstName?.message as string}
                   error={!!errors.firstName?.message}
@@ -76,9 +77,10 @@ const SignUpPage = observer(() => {
                   label="Last name"
                   placeholder="Enter last name"
                   variant="outlined"
-                  sx={{ mt: 2, mb: 0.5, height: '45px' }}
+                  sx={{ mt: 2, mb: 0.5 }}
                   color="secondary"
                   type="text"
+                  size="small"
                   {...register('lastName')}
                   helperText={errors.lastName?.message as string}
                   error={!!errors.lastName?.message}
@@ -88,9 +90,10 @@ const SignUpPage = observer(() => {
                   label="Phone"
                   placeholder="Enter phone"
                   variant="outlined"
-                  sx={{ mt: 2, mb: 0.5, height: '45px' }}
+                  sx={{ mt: 2, mb: 0.5 }}
                   color="secondary"
                   type="text"
+                  size="small"
                   {...register('phone')}
                   helperText={errors.phone?.message as string}
                   error={!!errors.phone?.message}
@@ -103,6 +106,7 @@ const SignUpPage = observer(() => {
                   sx={{ mt: 2, mb: 0.5 }}
                   color="secondary"
                   type="email"
+                  size="small"
                   {...register('email')}
                   helperText={errors.email?.message as string}
                   error={!!errors.email?.message}
@@ -114,6 +118,7 @@ const SignUpPage = observer(() => {
                   label="Password"
                   placeholder="Enter password"
                   color="secondary"
+                  size="small"
                   variant="outlined"
                   type={hiddenPassword ? 'password' : 'text'}
                   {...register('password')}
@@ -147,7 +152,7 @@ const SignUpPage = observer(() => {
                 </Styled.ButtonLink>
               </Styled.FormSign>
             </Grid>
-          </Styled.PaperContainer>
+          </Styled.PaperSignUpContainer>
         </Styled.GridContainer>
       </Container>
     </Styled.Main>

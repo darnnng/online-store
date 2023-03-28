@@ -1,4 +1,3 @@
-import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AxiosError } from 'axios';
 import { observer } from 'mobx-react-lite';
+import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import { RoutePath } from './../../../constants/routeVariables';
 import * as Styled from './LogIn.styles';
 import { IFormInput } from './LogIn.interface';
@@ -35,6 +35,7 @@ const LogInPage = observer(() => {
       const user = await login(input.email, input.password);
       userStore.setUser(user);
       userStore.setIsAuth(true);
+      localStorage.setItem('user', JSON.stringify(user));
       navigate(`/${RoutePath.CATALOG}`);
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -45,13 +46,13 @@ const LogInPage = observer(() => {
     }
   };
 
-  //TO-DO : исправить верстку, заменить импорты на @, вывод ошибок, добавить в постгрес телефоны и имена, убрать тип any,
-  //заменить auth там где надо, кнопка logout
+  //TO-DO : заменить импорты на @, вывод ошибок, добавить в постгрес телефоны и имена, убрать тип any,
+  //localstorage user, validation phone
   return (
     <Styled.Main>
       <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>
         <Styled.GridContainer container>
-          <Styled.PaperContainer>
+          <Styled.PaperLogInContainer>
             <Grid
               container
               direction="column"
@@ -112,7 +113,7 @@ const LogInPage = observer(() => {
                 </Styled.ButtonLink>
               </Styled.FormSign>
             </Grid>
-          </Styled.PaperContainer>
+          </Styled.PaperLogInContainer>
         </Styled.GridContainer>
       </Container>
     </Styled.Main>

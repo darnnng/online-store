@@ -1,14 +1,19 @@
-import { styled, Toolbar } from '@mui/material';
+import { styled, Toolbar, Button } from '@mui/material';
 
 export const ToolbarHeader = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'end',
+  width: '100%',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
   backgroundColor: theme.palette.primary.main,
 }));
 
-export const WrapAuthBtnHeader = styled('div')(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  columnGap: 8,
+export const LogoutButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.main,
+  marginLeft: '25px',
+  color: 'white',
+  minWidth: '100px',
+  '&:hover': {
+    backgroundColor: 'gray',
+  },
 }));

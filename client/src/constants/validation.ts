@@ -1,5 +1,4 @@
 import { object, string } from 'yup';
-const phoneRegExp = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
 export const loginSchema = object({
   email: string()
@@ -13,7 +12,9 @@ export const loginSchema = object({
 export const signUpSchema = object({
   firstName: string().max(20),
   lastName: string().max(25),
-  phone: string().matches(phoneRegExp, 'Phone number is not valid'),
+  phone: string()
+    .matches(/^\d+$/, 'The field should have digits only')
+    .max(12),
   email: string()
     .email()
     .required(),

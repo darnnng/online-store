@@ -14,11 +14,20 @@ export const GridContainer = styled(Grid)({
   right: '0',
 });
 
-export const PaperContainer = styled(Paper)(({ theme }) => ({
+export const PaperSignUpContainer = styled(Paper)(({ theme }) => ({
   padding: '10px',
   minHeight: 450,
   width: 450,
   margin: '20px auto',
+  borderRadius: '30px',
+  border: `${theme.palette.secondary.main} 2px solid`,
+}));
+
+export const PaperLogInContainer = styled(Paper)(({ theme }) => ({
+  padding: '10px',
+  minHeight: 450,
+  width: 450,
+  margin: '80px auto',
   borderRadius: '30px',
   border: `${theme.palette.secondary.main} 2px solid`,
 }));
