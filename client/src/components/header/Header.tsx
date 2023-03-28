@@ -1,4 +1,4 @@
-import { IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import { observer } from 'mobx-react-lite';
@@ -6,6 +6,7 @@ import React from 'react';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { SearchBox } from './../searchBox';
 import userStore from './../../store/UserStore';
 import { LanguageButton } from './../languageButton';
 import * as Styled from './Header.styles';
@@ -37,12 +38,18 @@ export const Header = observer(() => {
               </>
             ) : (
               <>
-                <Typography sx={{ color: 'white' }}>Your shopping cart</Typography>
-                <IconButton onClick={handleCartClick}>
-                  <ShoppingBasketIcon sx={{ color: 'white' }} />
-                </IconButton>
-                <LanguageButton />
-                <Styled.LogoutButton onClick={handleLogout}>Logout</Styled.LogoutButton>
+                <Box>
+                  <SearchBox />
+                </Box>
+
+                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                  <Typography sx={{ color: 'white' }}>Your shopping cart</Typography>
+                  <IconButton onClick={handleCartClick}>
+                    <ShoppingBasketIcon sx={{ color: 'white' }} />
+                  </IconButton>
+                  <LanguageButton />
+                  <Styled.LogoutButton onClick={handleLogout}>Logout</Styled.LogoutButton>
+                </Box>
               </>
             )}
           </Styled.ToolbarHeader>

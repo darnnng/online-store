@@ -47,7 +47,7 @@ const LogInPage = observer(() => {
   };
 
   //TO-DO : заменить импорты на @, вывод ошибок, добавить в постгрес телефоны и имена, убрать тип any,
-  //localstorage user, validation phone
+  //localstorage user, validation phone, перевод добавить
   return (
     <Styled.Main>
       <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>

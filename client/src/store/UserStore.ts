@@ -15,14 +15,6 @@ class UserStore {
   setUser(user: any) {
     this.user = user;
   }
-
-  // get findIsAuth() {
-  //   return this.isAuth;
-  // }
-
-  // get getUser() {
-  //   return this.user;
-  // }
 }
 
 const userStore = new UserStore();

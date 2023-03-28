@@ -3,7 +3,7 @@ import { styled, Toolbar, Button } from '@mui/material';
 export const ToolbarHeader = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   width: '100%',
-  justifyContent: 'flex-end',
+  justifyContent: 'space-between',
   alignItems: 'center',
   backgroundColor: theme.palette.primary.main,
 }));
