@@ -11,15 +11,17 @@ import userStore from './../../store/UserStore';
 import { LanguageButton } from './../languageButton';
 import * as Styled from './Header.styles';
 import { RoutePath } from './../../constants/routeVariables';
+import { useAuth } from './../../hooks/useAuth';
 
 export const Header = observer(() => {
-  const isAuth = userStore.isAuth;
+  const isAuth = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     userStore.setUser({});
     userStore.setIsAuth(false);
     localStorage.removeItem('user');
+    localStorage.removeItem('access_token');
     navigate(`/${RoutePath.LOGIN}`);
   };
 
@@ -38,10 +40,6 @@ export const Header = observer(() => {
               </>
             ) : (
               <>
-                <Box>
-                  <SearchBox />
-                </Box>
-
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                   <Typography sx={{ color: 'white' }}>Your shopping cart</Typography>
                   <IconButton onClick={handleCartClick}>

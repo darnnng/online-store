@@ -5,6 +5,7 @@ import { Layout } from './../components/layout';
 import { RoutePath } from './../constants/routeVariables';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { useAuth } from './../hooks/useAuth';
 
 const LogInPage = lazy(() => import('./../components/pages/LogInPage'));
 const SignUpPage = lazy(() => import('./../components/pages/SignUpPage'));
@@ -14,10 +15,22 @@ const AdminPage = lazy(() => import('./../components/pages/AdminPage'));
 const ItemPage = lazy(() => import('./../components/pages/ItemPage'));
 
 export const AppRouter = observer(() => {
+  const isAuth = useAuth();
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path={RoutePath.HOME} element={<Layout />}>
+          <Route
+            index
+            element={
+              isAuth ? (
+                <Navigate to={`/${RoutePath.CATALOG}`} replace />
+              ) : (
+                <Navigate to={`/${RoutePath.LOGIN}`} replace />
+              )
+            }
+          />
           <Route path="/" element={<Navigate to={RoutePath.LOGIN} replace />} />
           <Route
             path={RoutePath.LOGIN}

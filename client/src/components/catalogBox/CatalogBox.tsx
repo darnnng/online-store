@@ -1,19 +1,25 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, IconButton, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { RoutePath } from './../../constants/routeVariables';
 import { IItemBoxProps } from './CatalogBox.interface';
 import * as Styled from './catalogBox.styles';
 
 export const CatalogBox = observer(({ item }: IItemBoxProps) => {
+  const [like, setLike] = useState(false);
   const navigate = useNavigate();
+  const handlePutLike = () => {
+    setLike((like: boolean) => !like);
+  };
 
-  const handleMovieInfo = () => {
+  const handleDeviceInfo = () => {
     navigate(`/${RoutePath.CATALOG}/${item.id}`);
   };
   return (
-    <Styled.SingleBox onClick={handleMovieInfo}>
+    <Styled.SingleBox>
       <Box
         component="img"
         sx={{
@@ -21,11 +27,25 @@ export const CatalogBox = observer(({ item }: IItemBoxProps) => {
           width: 200,
           margin: 'auto',
         }}
-        alt="Device poster"
-        src={item.img}
+        alt="Device"
+        src={'http://localhost:5000/' + item.img}
       />
-      <Typography sx={{ height: '38px' }}>{item.name}</Typography>
-      <Typography>{item.price}$</Typography>
+      <Styled.NameTypography>{item.name}</Styled.NameTypography>
+      <Styled.PriceTypography>{item.price}.00$</Styled.PriceTypography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '5px',
+        }}
+      >
+        <Styled.CartButton>Add to cart</Styled.CartButton>
+        <IconButton onClick={handlePutLike}>
+          {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </IconButton>
+      </Box>
     </Styled.SingleBox>
   );
 });

@@ -34,7 +34,6 @@ const SignUpPage = observer(() => {
       const user = await registration(input.email, input.password);
       userStore.setUser(user);
       userStore.setIsAuth(true);
-      localStorage.setItem('user', JSON.stringify(user));
       navigate(`/${RoutePath.CATALOG}`);
     } catch (error) {
       if (error instanceof AxiosError) {
