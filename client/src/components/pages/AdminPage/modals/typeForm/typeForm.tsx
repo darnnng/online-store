@@ -1,14 +1,14 @@
 import React from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { entitiesSchema } from './../../../../../constants/validation';
-import { ModalWindowButton } from './../../../../UI/modalWindowButton';
-import { ModalWindow } from './../../../../UI/modalWindow';
-import { IBrandFormInput, IBrandModalProps } from './brandModal.types';
-import { InputText } from './../../../../UI/inputText';
-import { createBrand } from './../../../../../http/deviceAPI';
+import { Typography } from '@mui/material';
+import { entitiesSchema } from '../../../../../constants/validation';
+import { ModalWindowButton } from '../../../../UI/modalWindowButton';
+import { InputText } from '../../../../UI/inputText';
+import { createType } from '../../../../../http/deviceAPI';
+import * as Styled from '../brandForm/brandForm.styles';
 
-export const TypeModal = ({ onClose, open }: IBrandModalProps) => {
+export const TypeForm = () => {
   const {
     register,
     handleSubmit,
@@ -20,18 +20,12 @@ export const TypeModal = ({ onClose, open }: IBrandModalProps) => {
   });
 
   const onSubmit = (input: FieldValues) => {
-    createBrand({ name: input.value })
-      .then(() => {
-        console.log(input.value);
-        onClose();
-      })
-      .catch(() => {
-        console.log(input.value);
-      });
+    createType({ name: input.type });
   };
 
   return (
-    <ModalWindow title={'Add type'} onClose={onClose} open={open}>
+    <Styled.FormBox>
+      <Typography>Add type</Typography>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <InputText
           name="Type"
@@ -43,6 +37,6 @@ export const TypeModal = ({ onClose, open }: IBrandModalProps) => {
 
         <ModalWindowButton isValid={isValid} />
       </form>
-    </ModalWindow>
+    </Styled.FormBox>
   );
 };

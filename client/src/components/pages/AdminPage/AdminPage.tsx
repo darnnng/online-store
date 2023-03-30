@@ -1,37 +1,31 @@
-import { Container, Box } from '@mui/material';
-import { toJS } from 'mobx';
+import { Container, Box, Button } from '@mui/material';
 import * as React from 'react';
-import { useState } from 'react';
-import userStore from './../../../store/UserStore';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from './../../../constants/routeVariables';
 import * as Styled from './AdminPage.styles';
-import { BrandModal } from './modals/brandModal';
+import { BrandForm } from './modals/brandForm';
+import { TypeForm } from './modals/typeForm/typeForm';
 
 const AdminPage = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const handleOpenModal = () => {
-    setModalOpen(true);
+  const navigate = useNavigate();
+  const handleBackClick = () => {
+    navigate(`/${RoutePath.CATALOG}`);
   };
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
-  console.log('USER', toJS(userStore.user));
-
   return (
     <>
       <Styled.Main>
         <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>
+          <Button onClick={handleBackClick}>Back</Button>
           <Styled.GridContainer container>
             <Styled.TitleTypography>Admin panel</Styled.TitleTypography>
             <Box>
-              <Styled.AdminButton onClick={handleOpenModal}>Add brand</Styled.AdminButton>
-              <Styled.AdminButton>Add type</Styled.AdminButton>
+              <BrandForm />
+              <TypeForm />
               <Styled.AdminButton>Add device</Styled.AdminButton>
             </Box>
           </Styled.GridContainer>
         </Container>
       </Styled.Main>
-      {modalOpen && <BrandModal open={modalOpen} onClose={handleCloseModal} />}
     </>
   );
 };
