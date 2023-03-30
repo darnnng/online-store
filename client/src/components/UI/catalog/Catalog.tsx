@@ -3,12 +3,13 @@ import { Box, Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { toJS } from 'mobx';
-import { CatalogBox } from './../catalogBox/CatalogBox';
-import itemStore from './../../store/ItemsStore';
+import itemStore from '../../../store/ItemsStore';
+import { SearchBox } from '../searchBox';
+import { fetchDevices } from '../../../http/deviceAPI';
+import { IDevice } from '../../../store/item.interface';
+import userStore from '../../../store/UserStore';
+import { CatalogBox } from './../catalogBox';
 import * as Styled from './Catalog.styles';
-import { SearchBox } from './../searchBox';
-import { fetchDevices } from './../../http/deviceAPI';
-import { IDevice, IDeviceData } from './../../store/item.interface';
 
 export const Catalog = observer(() => {
   useEffect(() => {
@@ -16,6 +17,7 @@ export const Catalog = observer(() => {
   }, []);
 
   const listOfDevices = toJS(itemStore.devices.rows);
+  console.log('user', toJS(userStore.user));
 
   return (
     <Styled.Main>

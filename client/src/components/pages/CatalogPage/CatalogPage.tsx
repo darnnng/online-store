@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Catalog } from './../../catalog';
-import { SideList } from './../../sideList';
+import { Catalog } from '../../UI/catalog';
+import { SideList } from '../../UI/sideList';
 
 const CatalogPage = () => {
   return (

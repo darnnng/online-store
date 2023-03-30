@@ -7,8 +7,8 @@ import Divider from '@mui/material/Divider';
 import { Chip } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { toJS } from 'mobx';
-import { fetchBrands, fetchTypes } from './../../http/deviceAPI';
-import itemStore from './../../store/ItemsStore';
+import { fetchBrands, fetchTypes } from '../../../http/deviceAPI';
+import itemStore from '../../../store/ItemsStore';
 
 export const SideList = observer(() => {
   useEffect(() => {

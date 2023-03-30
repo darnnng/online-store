@@ -6,9 +6,8 @@ import React from 'react';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { SearchBox } from './../searchBox';
+import { LanguageButton } from '../UI/languageButton';
 import userStore from './../../store/UserStore';
-import { LanguageButton } from './../languageButton';
 import * as Styled from './Header.styles';
 import { RoutePath } from './../../constants/routeVariables';
 import { useAuth } from './../../hooks/useAuth';
@@ -21,7 +20,7 @@ export const Header = observer(() => {
     userStore.setUser({});
     userStore.setIsAuth(false);
     localStorage.removeItem('user');
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('token');
     navigate(`/${RoutePath.LOGIN}`);
   };
 
