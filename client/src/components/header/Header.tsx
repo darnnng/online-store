@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { LanguageButton } from '../UI/languageButton';
@@ -28,6 +29,11 @@ export const Header = observer(() => {
     navigate(`/${RoutePath.BASKET}`);
   };
 
+  //TO-DO fix privacy rules
+  const handleAdminButtonClick = () => {
+    navigate(`/${RoutePath.ADMIN}`);
+  };
+
   return (
     <>
       <AppBar position="fixed">
@@ -45,6 +51,9 @@ export const Header = observer(() => {
                     <ShoppingBasketIcon sx={{ color: 'white' }} />
                   </IconButton>
                   <LanguageButton />
+                  <IconButton onClick={handleAdminButtonClick}>
+                    <SupervisorAccountIcon sx={{ color: 'white' }} />
+                  </IconButton>
                   <Styled.LogoutButton onClick={handleLogout}>Logout</Styled.LogoutButton>
                 </Box>
               </>

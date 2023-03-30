@@ -56,6 +56,22 @@ export const mainTheme = createTheme({
         },
       },
     },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          margin: 0,
+          padding: 18,
+        },
+      },
+    },
+    MuiDialogContent: {
+      styleOverrides: {
+        root: {
+          padding: 18,
+          overflowX: 'hidden',
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         input: {

@@ -30,4 +30,8 @@ export const AdminButton = styled(Grid)(({ theme }) => ({
   height: '50px',
   textAlign: 'center',
   alignItems: 'center',
+  '&:hover': {
+    backgroundColor: 'gray',
+    cursor: 'pointer',
+  },
 }));

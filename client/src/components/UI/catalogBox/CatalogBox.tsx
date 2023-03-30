@@ -14,10 +14,10 @@ export const CatalogBox = observer(({ item }: IItemBoxProps) => {
   const handlePutLike = () => {
     setLike((like: boolean) => !like);
   };
-
   const handleDeviceInfo = () => {
     navigate(`/${RoutePath.CATALOG}/${item.id}`);
   };
+
   return (
     <Styled.SingleBox>
       <Box
@@ -29,6 +29,7 @@ export const CatalogBox = observer(({ item }: IItemBoxProps) => {
         }}
         alt="Device"
         src={'http://localhost:5000/' + item.img}
+        onClick={handleDeviceInfo}
       />
       <Styled.NameTypography>{item.name}</Styled.NameTypography>
       <Styled.PriceTypography>{item.price}.00$</Styled.PriceTypography>

@@ -13,7 +13,7 @@ export const fetchTypes = async () => {
 };
 
 export const createBrand = async (brand: any) => {
-  const { data } = await $authHost.post('api/brand', brand);
+  const { data } = await $host.post('api/brand', brand);
   return data;
 };
 

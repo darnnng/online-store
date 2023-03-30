@@ -22,3 +22,7 @@ export const signUpSchema = object({
     .required()
     .min(5),
 });
+
+export const entitiesSchema = object({
+  brand: string().max(25),
+});
