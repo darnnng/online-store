@@ -28,7 +28,7 @@ export const ItemsListBox = styled(Grid)(() => ({
 
 export const ChipBox = styled(Box)(({ theme }) => ({
   margin: '20px',
-  marginTop: '100px',
+  marginTop: '50px',
   display: 'flex',
   justifyContent: 'space-between',
   [theme.breakpoints.down('sm')]: {

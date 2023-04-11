@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Box, Container } from '@mui/material';
+import { Box, Container, Slider } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { toJS } from 'mobx';
@@ -8,6 +8,7 @@ import { SearchBox } from '../searchBox';
 import { fetchDevices } from '../../../http/deviceAPI';
 import { IDevice } from '../../../store/item.interface';
 import userStore from '../../../store/UserStore';
+import { SliderCarousel } from '../sliderCarousel';
 import { CatalogBox } from './../catalogBox';
 import * as Styled from './Catalog.styles';
 
@@ -23,6 +24,7 @@ export const Catalog = observer(() => {
   return (
     <Styled.Main>
       <Container maxWidth="xl" sx={{ height: '100%', pb: 2 }}>
+        <SliderCarousel />
         <Styled.GridContainer>
           <Styled.ChipBox>
             <Box>
