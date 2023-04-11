@@ -1,10 +1,16 @@
 import { makeAutoObservable } from 'mobx';
+import { makePersistable } from 'mobx-persist-store';
 
 class UserStore {
   isAuth = false;
   user = {};
   constructor() {
     makeAutoObservable(this);
+    makePersistable(this, {
+      name: 'UserStore',
+      properties: ['isAuth', 'user'],
+      storage: window.localStorage,
+    });
   }
 
   setIsAuth(value: boolean) {
@@ -14,6 +20,9 @@ class UserStore {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setUser(user: any) {
     this.user = user;
+  }
+  get auth() {
+    return this.isAuth;
   }
 }
 

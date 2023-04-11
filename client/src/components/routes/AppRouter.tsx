@@ -16,7 +16,7 @@ const ItemPage = lazy(() => import('../pages/ItemPage'));
 
 export const AppRouter = observer(() => {
   const isAuth = useAuth();
-  console.log('router', isAuth);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -31,7 +31,7 @@ export const AppRouter = observer(() => {
               )
             }
           />
-          <Route path="/" element={<Navigate to={RoutePath.LOGIN} replace />} />
+          <Route path="/" element={<Navigate to={RoutePath.CATALOG} replace />} />
           <Route
             path={RoutePath.LOGIN}
             element={

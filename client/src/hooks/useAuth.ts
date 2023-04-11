@@ -1,4 +1,6 @@
+import userStore from './../store/UserStore';
+
 export const useAuth = () => {
-  const user = localStorage.getItem('token');
+  const user = userStore.isAuth;
   return !!user;
 };

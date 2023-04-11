@@ -7,7 +7,6 @@ import itemStore from '../../../store/ItemsStore';
 import { SearchBox } from '../searchBox';
 import { fetchDevices } from '../../../http/deviceAPI';
 import { IDevice } from '../../../store/item.interface';
-import userStore from '../../../store/UserStore';
 import { SliderCarousel } from '../sliderCarousel';
 import { CatalogBox } from './../catalogBox';
 import * as Styled from './Catalog.styles';
@@ -18,8 +17,6 @@ export const Catalog = observer(() => {
   }, []);
 
   const listOfDevices = toJS(itemStore.devices.rows);
-  console.log('user', toJS(userStore.user));
-  console.log('devices', itemStore.devices.rows);
 
   return (
     <Styled.Main>

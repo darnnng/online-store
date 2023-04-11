@@ -31,7 +31,13 @@ const SignUpPage = observer(() => {
 
   const onSubmit = async (input: IFormInput) => {
     try {
-      const user = await registration(input.email, input.password);
+      const user = await registration(
+        input.email,
+        input.password,
+        input.firstName,
+        input.lastName,
+        input.phone
+      );
       userStore.setUser(user);
       userStore.setIsAuth(true);
       navigate(`/${RoutePath.CATALOG}`);

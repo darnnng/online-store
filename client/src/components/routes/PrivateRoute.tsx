@@ -6,8 +6,8 @@ import { RoutePath } from '../../constants/routeVariables';
 import { IRouteProps } from './Route.interface';
 
 export const PrivateRoute: FC<IRouteProps> = observer(({ children }) => {
-  const isAuth = localStorage.getItem('user');
-
+  const isAuth = userStore.isAuth;
+  //TO-DO FIX USEAUTH
   if (!isAuth) {
     return <Navigate to={`/${RoutePath.LOGIN}`} replace />;
   }

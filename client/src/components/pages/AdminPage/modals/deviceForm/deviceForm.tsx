@@ -21,7 +21,7 @@ export const DeviceForm = observer(() => {
     watch,
     reset,
     formState,
-    formState: { errors, isValid, isSubmitSuccessful },
+    formState: { errors, isValid },
   } = useForm<FieldValues>({
     defaultValues: { name: '', price: '', type: '', brand: '', picture: '' },
     mode: 'onChange',
@@ -49,7 +49,6 @@ export const DeviceForm = observer(() => {
     formData.append('typeId', input.type);
     formData.append('img', input.picture[0]);
     createDevice(formData);
-    console.log(input);
   };
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { makePersistable } from 'mobx-persist-store';
 import { IDeviceData } from './item.interface';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -9,6 +10,11 @@ class ItemsStore {
 
   constructor() {
     makeAutoObservable(this);
+    makePersistable(this, {
+      name: 'ItemsStore',
+      properties: ['types', 'brands', 'devices'],
+      storage: window.localStorage,
+    });
   }
 
   setTypes(value: any) {
