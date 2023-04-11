@@ -18,6 +18,7 @@ export const Catalog = observer(() => {
 
   const listOfDevices = toJS(itemStore.devices.rows);
   console.log('user', toJS(userStore.user));
+  console.log('devices', itemStore.devices.rows);
 
   return (
     <Styled.Main>

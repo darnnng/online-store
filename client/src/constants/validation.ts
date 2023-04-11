@@ -1,4 +1,4 @@
-import { object, string } from 'yup';
+import { mixed, number, object, string } from 'yup';
 
 export const loginSchema = object({
   email: string()
@@ -25,4 +25,31 @@ export const signUpSchema = object({
 
 export const entitiesSchema = object({
   brand: string().max(25),
+});
+
+export const deviceSchema = object().shape({
+  picture: mixed()
+    .test('type', 'The file must be JPG, JPEG or PNG', (image) => {
+      if (image?.length) {
+        return (
+          image[0].type === 'image/jpeg' ||
+          image[0].type === 'image/jpg' ||
+          image[0].type === 'image/png' ||
+          image[0].type === 'image/gif'
+        );
+      }
+      return true;
+    })
+    .test('fileSize', 'The file is too large', (image) => {
+      if (image?.length) {
+        return image[0].size <= 500000;
+      }
+      return true;
+    }),
+  price: number()
+    .typeError('price must be a number')
+    .required(),
+  name: string()
+    .required()
+    .min(5),
 });

@@ -1,1 +1,0 @@
-export { DeviceModal } from './deviceModal';

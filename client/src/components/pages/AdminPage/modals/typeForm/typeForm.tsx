@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
@@ -12,7 +12,9 @@ export const TypeForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    reset,
+    formState,
+    formState: { errors, isValid, isSubmitSuccessful },
   } = useForm<FieldValues>({
     defaultValues: { type: '' },
     mode: 'onChange',
@@ -22,6 +24,12 @@ export const TypeForm = () => {
   const onSubmit = (input: FieldValues) => {
     createType({ name: input.type });
   };
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({ type: '' });
+    }
+  }, [formState, reset]);
 
   return (
     <Styled.FormBox>
