@@ -3,7 +3,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import TranslateIcon from '@mui/icons-material/Translate';
-import { Languages } from '../../../constants/languages';
+import { Languages } from '@constants/languages';
 import * as Styled from './LanguageButton.styles';
 
 export const LanguageButton = () => {

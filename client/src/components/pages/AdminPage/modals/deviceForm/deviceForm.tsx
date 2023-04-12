@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 import { toJS } from 'mobx';
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { deviceSchema } from '../../../../../constants/validation';
+import { deviceSchema } from '@constants/validation';
 import { ModalWindowButton } from '../../../../UI/modalWindowButton';
 import { InputText } from '../../../../UI/inputText';
 import { createDevice } from './../../../../../http/deviceAPI';

@@ -21,10 +21,9 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@interfaces/*": ["src/interfaces/*"],
-      "@components/*": ["src/components/*"]
+      "@constants/*": ["src/constants/*"]
     }
   },
-  "include": ["src"],
+  "include": ["./src/**/*"],
   "exclude": ["public", "node_modules"]
 }

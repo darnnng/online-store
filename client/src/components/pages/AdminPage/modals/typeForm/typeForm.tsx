@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
-import { entitiesSchema } from '../../../../../constants/validation';
+import { entitiesSchema } from '@constants/validation';
 import { ModalWindowButton } from '../../../../UI/modalWindowButton';
 import { InputText } from '../../../../UI/inputText';
 import { createType } from '../../../../../http/deviceAPI';

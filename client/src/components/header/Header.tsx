@@ -7,10 +7,10 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@constants/routeVariables';
 import { LanguageButton } from '../UI/languageButton';
 import userStore from './../../store/UserStore';
 import * as Styled from './Header.styles';
-import { RoutePath } from './../../constants/routeVariables';
 import { useAuth } from './../../hooks/useAuth';
 
 export const Header = observer(() => {

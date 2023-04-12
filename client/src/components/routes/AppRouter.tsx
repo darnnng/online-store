@@ -1,8 +1,8 @@
 import React, { lazy } from 'react';
 import { Routes, Route, Navigate, BrowserRouter, Outlet } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import { RoutePath } from '@constants/routeVariables';
 import { Layout } from '../layout';
-import { RoutePath } from '../../constants/routeVariables';
 import { useAuth } from '../../hooks/useAuth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';

@@ -2,7 +2,7 @@ import { Container, Box, Button } from '@mui/material';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import { RoutePath } from './../../../constants/routeVariables';
+import { RoutePath } from '@constants/routeVariables';
 import * as Styled from './AdminPage.styles';
 import { BrandForm } from './modals/brandForm';
 import { TypeForm } from './modals/typeForm/typeForm';

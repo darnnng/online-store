@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+var path = require('path');
 require('dotenv').config();
 const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -93,7 +94,11 @@ module.exports = {
   resolve: {
     symlinks: false,
     extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      '@constants': path.resolve(__dirname, 'src/constants/'),
+    },
   },
+
   optimization: {
     splitChunks: {
       chunks: 'async',

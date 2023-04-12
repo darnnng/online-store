@@ -7,10 +7,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { AxiosError } from 'axios';
 import { observer } from 'mobx-react-lite';
 import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
-import { RoutePath } from './../../../constants/routeVariables';
+import { RoutePath } from '@constants/routeVariables';
+import { loginSchema } from '@constants/validation';
 import * as Styled from './LogIn.styles';
 import { IFormInput } from './LogIn.interface';
-import { loginSchema } from './../../../constants/validation';
 import { login } from './../../../http/userAPI';
 import userStore from './../../../store/UserStore';
 
