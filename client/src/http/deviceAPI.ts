@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { $authHost, $host } from './index';
+import { IType } from '@src/interfaces/IType';
+import { IBrand } from '@src/interfaces/IBrand';
+import { $host } from './index';
 
-export const createType = async (type: any) => {
-  const { data } = await $authHost.post('api/type', type);
+export const createType = async (type: IType) => {
+  const { data } = await $host.post('api/type', type);
   return data;
 };
 
@@ -11,7 +12,7 @@ export const fetchTypes = async () => {
   return data;
 };
 
-export const createBrand = async (brand: any) => {
+export const createBrand = async (brand: IBrand) => {
   const { data } = await $host.post('api/brand', brand);
   return data;
 };
@@ -21,8 +22,8 @@ export const fetchBrands = async () => {
   return data;
 };
 
-export const createDevice = async (device: any) => {
-  const { data } = await $authHost.post('api/device', device);
+export const createDevice = async (device: FormData) => {
+  const { data } = await $host.post('api/device', device);
   return data;
 };
 

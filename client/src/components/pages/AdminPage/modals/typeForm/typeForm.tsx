@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
@@ -14,7 +14,7 @@ export const TypeForm = () => {
     handleSubmit,
     reset,
     formState,
-    formState: { errors, isValid, isSubmitSuccessful },
+    formState: { errors, isValid },
   } = useForm<FieldValues>({
     defaultValues: { type: '' },
     mode: 'onChange',

@@ -1,11 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 import { makePersistable } from 'mobx-persist-store';
+import { IType } from '@src/interfaces/IType';
+import { IBrand } from '@src/interfaces/IBrand';
 import { IDeviceData } from './item.interface';
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 class ItemsStore {
-  types = [];
-  brands = [];
+  types = [] as IType[];
+  brands = [] as IBrand[];
   devices = {} as IDeviceData;
 
   constructor() {
@@ -17,15 +18,15 @@ class ItemsStore {
     });
   }
 
-  setTypes(value: any) {
+  setTypes(value: IType[]) {
     this.types = value;
   }
 
-  setBrands(value: any) {
+  setBrands(value: IBrand[]) {
     this.brands = value;
   }
 
-  setDevices(value: any) {
+  setDevices(value: IDeviceData) {
     this.devices = value;
   }
 }

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Box, Container, Slider } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { toJS } from 'mobx';
 import itemStore from '../../../store/ItemsStore';
 import { SearchBox } from '../searchBox';

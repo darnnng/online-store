@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
@@ -11,6 +10,8 @@ import { InputText } from '@components/UI/inputText';
 import { createDevice } from '@src/http/deviceAPI';
 import itemStore from '@src/store/ItemsStore';
 import { InputSelect } from '@components/UI/inputSelect';
+import { IType } from '@src/interfaces/IType';
+import { IBrand } from '@src/interfaces/IBrand';
 import * as Styled from './deviceForm.styles';
 
 export const DeviceForm = observer(() => {
@@ -29,13 +30,13 @@ export const DeviceForm = observer(() => {
   });
 
   const typesList = toJS(
-    itemStore.types.map((type: any) => ({
+    itemStore.types.map((type: IType) => ({
       id: type.id,
       name: type.name,
     }))
   );
   const brandsList = toJS(
-    itemStore.brands.map((brand: any) => ({
+    itemStore.brands.map((brand: IBrand) => ({
       id: brand.id,
       name: brand.name,
     }))
@@ -61,7 +62,7 @@ export const DeviceForm = observer(() => {
   const handlerDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
-
+  //TO-DO FIX AND DELETE UNNECESSARY
   const handlerOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setValue('picture', e.dataTransfer.files, { shouldValidate: true });
