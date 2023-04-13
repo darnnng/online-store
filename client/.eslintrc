@@ -28,9 +28,11 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-var-reqiures": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-var-requires": 0,
+
     "import/order": [
       "error",
       {
@@ -55,9 +57,11 @@
       }
     ]
   },
+
   "settings": {
     "import/resolver": {
       "typescript": {},
+      "webpack": {},
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },

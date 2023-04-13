@@ -95,7 +95,9 @@ module.exports = {
     symlinks: false,
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
-      '@constants': path.resolve(__dirname, 'src/constants/'),
+      '@constants': path.resolve(__dirname, './src/constants/'),
+      '@components': path.resolve(__dirname, './src/components/'),
+      '@src': path.resolve(__dirname, 'src/'),
     },
   },
 

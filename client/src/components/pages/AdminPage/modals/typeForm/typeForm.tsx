@@ -3,9 +3,9 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Typography } from '@mui/material';
 import { entitiesSchema } from '@constants/validation';
-import { ModalWindowButton } from '../../../../UI/modalWindowButton';
-import { InputText } from '../../../../UI/inputText';
-import { createType } from '../../../../../http/deviceAPI';
+import { ModalWindowButton } from '@components/UI/modalWindowButton';
+import { InputText } from '@components/UI/inputText';
+import { createType } from '@src/http/deviceAPI';
 import * as Styled from '../brandForm/brandForm.styles';
 
 export const TypeForm = () => {

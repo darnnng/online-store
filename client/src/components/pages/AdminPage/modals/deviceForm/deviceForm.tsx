@@ -6,11 +6,11 @@ import { toJS } from 'mobx';
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { deviceSchema } from '@constants/validation';
-import { ModalWindowButton } from '../../../../UI/modalWindowButton';
-import { InputText } from '../../../../UI/inputText';
-import { createDevice } from './../../../../../http/deviceAPI';
-import itemStore from './../../../../../store/ItemsStore';
-import { InputSelect } from './../../../../UI/inputSelect';
+import { ModalWindowButton } from '@components/UI/modalWindowButton';
+import { InputText } from '@components/UI/inputText';
+import { createDevice } from '@src/http/deviceAPI';
+import itemStore from '@src/store/ItemsStore';
+import { InputSelect } from '@components/UI/inputSelect';
 import * as Styled from './deviceForm.styles';
 
 export const DeviceForm = observer(() => {

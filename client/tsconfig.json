@@ -21,7 +21,9 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["./src/constants/*"],
+      "@components/*": ["./src/components/*"],
+      "@src/*": ["./src/*"]
     }
   },
   "include": ["./src/**/*"],

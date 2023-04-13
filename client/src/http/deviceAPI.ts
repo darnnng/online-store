@@ -8,7 +8,6 @@ export const createType = async (type: any) => {
 
 export const fetchTypes = async () => {
   const { data } = await $host.get('api/type');
-  console.log('data', data);
   return data;
 };
 
@@ -29,7 +28,6 @@ export const createDevice = async (device: any) => {
 
 export const fetchDevices = async () => {
   const { data } = await $host.get('api/device');
-  console.log('data', data);
   return data;
 };
 

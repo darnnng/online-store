@@ -9,10 +9,10 @@ import { observer } from 'mobx-react-lite';
 import { AxiosError } from 'axios';
 import { RoutePath } from '@constants/routeVariables';
 import { signUpSchema } from '@constants/validation';
+import { registration } from '@src/http/userAPI';
+import userStore from '@src/store/UserStore';
 import * as Styled from '../LogInPage/LogIn.styles';
 import { IFormInput } from './SignUp.interface';
-import { registration } from './../../../http/userAPI';
-import userStore from './../../../store/UserStore';
 
 const SignUpPage = observer(() => {
   const [hiddenPassword, setHiddenPassword] = useState(true);

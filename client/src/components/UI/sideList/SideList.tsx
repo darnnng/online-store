@@ -7,8 +7,8 @@ import { Box, Chip, IconButton, Slider } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { toJS } from 'mobx';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { fetchBrands, fetchTypes } from '../../../http/deviceAPI';
-import itemStore from '../../../store/ItemsStore';
+import { fetchBrands, fetchTypes } from '@src/http/deviceAPI';
+import itemStore from '@src/store/ItemsStore';
 import * as Styled from './sideList.styles';
 
 export const SideList = observer(() => {

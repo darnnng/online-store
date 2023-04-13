@@ -9,10 +9,10 @@ import { observer } from 'mobx-react-lite';
 import { Container, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import { RoutePath } from '@constants/routeVariables';
 import { loginSchema } from '@constants/validation';
+import { login } from '@src/http/userAPI';
+import userStore from '@src/store/UserStore';
 import * as Styled from './LogIn.styles';
 import { IFormInput } from './LogIn.interface';
-import { login } from './../../../http/userAPI';
-import userStore from './../../../store/UserStore';
 
 const LogInPage = observer(() => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
