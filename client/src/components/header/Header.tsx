@@ -10,6 +10,7 @@ import { RoutePath } from '@constants/routeVariables';
 import { LanguageButton } from '@components/UI/languageButton';
 import userStore from '@src/store/UserStore';
 import { useAuth } from '@src/hooks/useAuth';
+import { IUser } from '@src/interfaces/IUser';
 import * as Styled from './Header.styles';
 
 export const Header = observer(() => {
@@ -17,18 +18,20 @@ export const Header = observer(() => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    userStore.setUser({});
+    userStore.setUser({} as IUser);
     userStore.setIsAuth(false);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    navigate(`/${RoutePath.LOGIN}`);
   };
 
   const handleCartClick = () => {
     navigate(`/${RoutePath.BASKET}`);
   };
 
-  //TO-DO fix privacy rules
+  const handleSignIn = () => {
+    navigate(`/${RoutePath.LOGIN}`);
+  };
+
   const handleAdminButtonClick = () => {
     navigate(`/${RoutePath.ADMIN}`);
   };
@@ -41,18 +44,21 @@ export const Header = observer(() => {
             {!isAuth ? (
               <>
                 <LanguageButton />
+                <Styled.LogoutButton onClick={handleSignIn}>Sign in</Styled.LogoutButton>
               </>
             ) : (
               <>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Typography sx={{ color: 'white' }}>Your shopping cart</Typography>
+                  <Typography sx={{ color: 'white' }}>Your cart</Typography>
                   <IconButton onClick={handleCartClick}>
                     <ShoppingBasketIcon sx={{ color: 'white' }} />
                   </IconButton>
                   <LanguageButton />
-                  <IconButton onClick={handleAdminButtonClick}>
-                    <SupervisorAccountIcon sx={{ color: 'white' }} />
-                  </IconButton>
+                  {userStore?.user?.role === 'Admin' && (
+                    <IconButton onClick={handleAdminButtonClick}>
+                      <SupervisorAccountIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                  )}
                   <Styled.LogoutButton onClick={handleLogout}>Logout</Styled.LogoutButton>
                 </Box>
               </>

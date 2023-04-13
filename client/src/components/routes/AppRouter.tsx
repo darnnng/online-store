@@ -6,6 +6,7 @@ import { useAuth } from '@src/hooks/useAuth';
 import { Layout } from '../layout';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { PrivateRouteAdmin } from './PrivateRouteAdmin';
 
 const LogInPage = lazy(() => import('../pages/LogInPage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
@@ -48,7 +49,6 @@ export const AppRouter = observer(() => {
               </PublicRoute>
             }
           />
-          {/* --TO-DO CHANGE PRIVACY ROUTES */}
           <Route path={RoutePath.CATALOG} element={<Outlet />}>
             <Route index element={<CatalogPage />} />
             <Route path=":id" element={<ItemPage />} />
@@ -65,9 +65,9 @@ export const AppRouter = observer(() => {
           <Route
             path={RoutePath.ADMIN}
             element={
-              <PrivateRoute>
+              <PrivateRouteAdmin>
                 <AdminPage />
-              </PrivateRoute>
+              </PrivateRouteAdmin>
             }
           />
         </Route>

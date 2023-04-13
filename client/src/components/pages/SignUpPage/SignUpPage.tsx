@@ -11,6 +11,7 @@ import { RoutePath } from '@constants/routeVariables';
 import { signUpSchema } from '@constants/validation';
 import { registration } from '@src/http/userAPI';
 import userStore from '@src/store/UserStore';
+import { IUser } from '@src/interfaces/IUser';
 import * as Styled from '../LogInPage/LogIn.styles';
 import { IFormInput } from './SignUp.interface';
 
@@ -38,7 +39,7 @@ const SignUpPage = observer(() => {
         input.lastName,
         input.phone
       );
-      userStore.setUser(user);
+      userStore.setUser(user as IUser);
       userStore.setIsAuth(true);
       navigate(`/${RoutePath.CATALOG}`);
     } catch (error) {

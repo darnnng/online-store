@@ -5,9 +5,9 @@ import userStore from '../../store/UserStore';
 import { RoutePath } from '../../constants/routeVariables';
 import { IRouteProps } from './Route.interface';
 
-export const PrivateRoute: FC<IRouteProps> = observer(({ children }) => {
-  const isAuth = userStore.isAuth;
-  if (!isAuth) {
+export const PrivateRouteAdmin: FC<IRouteProps> = observer(({ children }) => {
+  const isAdmin = userStore.user?.role === 'Admin';
+  if (!isAdmin) {
     return <Navigate to={`/${RoutePath.CATALOG}`} replace />;
   }
 

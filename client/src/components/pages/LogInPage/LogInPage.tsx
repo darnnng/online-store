@@ -11,6 +11,7 @@ import { RoutePath } from '@constants/routeVariables';
 import { loginSchema } from '@constants/validation';
 import { login } from '@src/http/userAPI';
 import userStore from '@src/store/UserStore';
+import { IUser } from '@src/interfaces/IUser';
 import * as Styled from './LogIn.styles';
 import { IFormInput } from './LogIn.interface';
 
@@ -33,7 +34,7 @@ const LogInPage = observer(() => {
   const onSubmit = async (input: IFormInput) => {
     try {
       const user = await login(input.email, input.password);
-      userStore.setUser(user);
+      userStore.setUser(user as IUser);
       userStore.setIsAuth(true);
       navigate(`/${RoutePath.CATALOG}`);
     } catch (error) {

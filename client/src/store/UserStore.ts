@@ -1,9 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 import { makePersistable } from 'mobx-persist-store';
+import { IUser } from '@src/interfaces/IUser';
 
 class UserStore {
   isAuth = false;
-  user = {};
+  user = {} as IUser;
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
@@ -17,12 +18,8 @@ class UserStore {
     this.isAuth = value;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setUser(user: any) {
+  setUser(user: IUser) {
     this.user = user;
-  }
-  get auth() {
-    return this.isAuth;
   }
 }
 
