@@ -5,6 +5,7 @@ export const ToolbarHeader = styled(Toolbar)(({ theme }) => ({
   width: '100%',
   justifyContent: 'flex-end',
   alignItems: 'center',
+  height: '120px',
   backgroundColor: theme.palette.primary.main,
 }));
 

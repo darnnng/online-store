@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Box, Chip, IconButton, Slider } from '@mui/material';
+import { Box, Chip, Divider, IconButton, Slider } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { toJS } from 'mobx';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -26,7 +26,7 @@ export const SideList = observer(() => {
       <List
         component="nav"
         aria-label="main mailbox folders"
-        disablePadding={false}
+        disablePadding={true}
         sx={{ border: ' 1px solid lightgray', mt: '0px' }}
       >
         {typesList?.map((item: IType) => (
@@ -39,14 +39,16 @@ export const SideList = observer(() => {
         ))}
       </List>
 
-      <Box sx={{ mt: '30px' }}>
+      <Box sx={{ m: '30px 0px' }}>
         <Styled.FilterTitle>Manufacturer</Styled.FilterTitle>
+
         <Styled.ChipBox>
           {brandsList?.map((item: IBrand) => (
             <Chip key={item.id} label={item.name} variant="filled" sx={{ cursor: 'pointer' }} />
           ))}
         </Styled.ChipBox>
       </Box>
+      <Divider />
 
       <Box sx={{ mt: '30px' }}>
         <Styled.FilterTitle>Price</Styled.FilterTitle>

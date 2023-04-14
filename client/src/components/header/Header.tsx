@@ -2,7 +2,7 @@ import { Box, IconButton } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import { observer } from 'mobx-react-lite';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
@@ -49,9 +49,18 @@ export const Header = observer(() => {
             ) : (
               <>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <Typography sx={{ color: 'white' }}>Your cart</Typography>
-                  <IconButton onClick={handleCartClick}>
-                    <ShoppingBasketIcon sx={{ color: 'white' }} />
+                  <IconButton
+                    onClick={handleCartClick}
+                    sx={{
+                      color: 'white',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <ShoppingCartIcon sx={{ color: 'white' }} fontSize="large" />
+                    <Typography>Basket</Typography>
                   </IconButton>
                   <LanguageButton />
                   {userStore?.user?.role === 'Admin' && (

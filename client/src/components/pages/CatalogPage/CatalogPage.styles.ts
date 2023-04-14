@@ -11,5 +11,5 @@ export const SideListContainer = styled(Box)(() => ({
   width: '100%',
   maxWidth: '250px',
   backgroundColor: 'background.paper',
-  margin: '90px 40px 0px',
+  margin: '145px 40px 0px',
 }));

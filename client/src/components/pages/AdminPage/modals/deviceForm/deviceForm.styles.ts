@@ -21,6 +21,7 @@ export const WrapperDropArea = styled('div')(({ theme }) => ({
   border: '1px dashed #000',
   borderRadius: '8px',
   textAlign: 'center',
+  margin: '30px 0',
 
   [theme.breakpoints.down('sm')]: {
     padding: '8px',

@@ -8,6 +8,6 @@ export const ChipBox = styled(Box)({
 });
 
 export const FilterTitle = styled(Box)({
-  mb: '15px',
   fontWeight: 'bold',
+  marginBottom: '20px',
 });

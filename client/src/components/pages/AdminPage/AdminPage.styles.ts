@@ -1,7 +1,7 @@
 import { Grid, styled } from '@mui/material';
 
 export const Main = styled('main')({
-  marginTop: '65px',
+  marginTop: '115px',
   overflowX: 'hidden',
   backgroundColor: '#f5f5f7',
 });

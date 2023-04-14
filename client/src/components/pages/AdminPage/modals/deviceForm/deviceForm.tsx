@@ -1,8 +1,8 @@
 import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Typography } from '@mui/material';
+import { Typography, Button, Box } from '@mui/material';
 import { toJS } from 'mobx';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { deviceSchema } from '@constants/validation';
 import { ModalWindowButton } from '@components/UI/modalWindowButton';
@@ -13,6 +13,12 @@ import { InputSelect } from '@components/UI/inputSelect';
 import { IType } from '@src/interfaces/IType';
 import { IBrand } from '@src/interfaces/IBrand';
 import * as Styled from './deviceForm.styles';
+
+export interface IDeviceInfo {
+  title: string;
+  description: string;
+  id: number;
+}
 
 export const DeviceForm = observer(() => {
   const {
@@ -28,6 +34,14 @@ export const DeviceForm = observer(() => {
     mode: 'onChange',
     resolver: yupResolver(deviceSchema),
   });
+
+  const [info, setInfo] = useState<IDeviceInfo[]>([]);
+
+  const addInfo = (input: FieldValues) => {
+    setInfo([...info, { title: '', description: '', id: Date.now() }]);
+  };
+
+  console.log(info);
 
   const typesList = toJS(
     itemStore.types.map((type: IType) => ({
@@ -88,7 +102,6 @@ export const DeviceForm = observer(() => {
         />
 
         <InputSelect label="Brand" registerName="brand" register={register} data={brandsList} />
-
         <InputSelect label="Type" registerName="type" register={register} data={typesList} />
 
         <Styled.WrapperDropArea onDragOver={handlerDragOver} onDrop={handlerOnDrop}>
@@ -105,6 +118,13 @@ export const DeviceForm = observer(() => {
           <Styled.Paragraph>Drag and drop the file here</Styled.Paragraph>
           <Styled.Paragraph>JPG, JPEG, PNG no more than 500 Kb</Styled.Paragraph>
         </Styled.WrapperDropArea>
+        <Button onClick={addInfo}>Add new characteristics</Button>
+        {info.map((elem) => (
+          <Box key={elem.id}>
+            <InputText name="Name" registerName="propertyName" register={register} />
+            <InputText name="Value" registerName="propertyDescription" register={register} />
+          </Box>
+        ))}
 
         <ModalWindowButton isValid={isValid} />
       </form>
